@@ -109,16 +109,23 @@ function get_rod_cut_price_combinations(rod_length_inches, rod_length_prices, go
                     if (gold_length_found_indices[0] === -1) {
                         break;
                     }
+                    let rod_length_price_combination_clone = JSON.parse(JSON.stringify(rod_length_price_combinations[i]));
                     for (let m = 0; m < gold_length_found_indices.length; m++) {
                         //need to revise this - perhaps clone rod_length_price_combinations
-                        rod_length_price_combinations[i][gold_length_found_indices[m]].is_gold_coated = true;
-                        console.log(rod_length_price_combinations[i].map(function (val) { return val.rod_length + ":" + val.rod_length_price + "|" + ((val.is_gold_coated) ? "G" : "M"); }).join(", "));
+                        rod_length_price_combination_clone[gold_length_found_indices[m]].is_gold_coated = true;
+                        rod_length_price_combination_clone[gold_length_found_indices[m]].rod_length_price *= 2;
                     }
+                    console.log(
+                        rod_length_price_combination_clone.map(function (val) { return val.rod_length + ":" + val.rod_length_price + "|" + ((val.is_gold_coated) ? "G" : "M"); }).join(", "),
+                        " -- price_sum: " + rod_length_price_combination_clone.reduce(function (prev, current) {
+                            return prev + current.rod_length_price;
+                        }, 0));
                     break;
                 }
             })();
         }
     }
+    /*
     for (let i = 0; i < rod_length_price_combinations.length; i++) {
         for (let j = 0; j < gold_length_combinations.length; j++) {
             console.log(gold_length_combinations[j]);
@@ -143,7 +150,9 @@ function get_rod_cut_price_combinations(rod_length_inches, rod_length_prices, go
             }
         }
     }
+    */
 
+    /*
     rod_length_price_combinations.map(function (rod_length_price_combination) {
         console.log(rod_length_price_combination.map(function (val, index) {
             return + val.rod_length + ":" + val.rod_length_price + "|" + ((val.is_gold_coated) ? "G" : "M");
@@ -151,6 +160,7 @@ function get_rod_cut_price_combinations(rod_length_inches, rod_length_prices, go
             return prev + current.rod_length_price;
         }, 0));
     });
+    */
 
     /*
     for (let i = 0; i < rod_length_inches_price_combinations.length; i++) {
