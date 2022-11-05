@@ -198,13 +198,13 @@ var gold_length_inches = 4;
 
 let rod_length_inches = 5;
 let prices = [1, 2, 5, 7, 11];
-var gold_length_inches = 1;
+var gold_length_inches = 4;
 
 /*
 G = 1 -> 11
 G = 2 -> 11
 G = 3 -> 12
-G = 4 -> 14
+G = 4 -> 15
 G = 5 -> 22
 */
 
