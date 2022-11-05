@@ -106,10 +106,16 @@ function get_rod_cut_price_combinations(rod_length_inches, rod_length_prices, go
             (function () {
                 for (let k = 0; k < gold_length_combinations[j].length; k++) {
                     let gold_length_found_indices = indicesOf(rod_length_price_combinations[i].map(function (val) { return val.rod_length; }), gold_length_combinations[j])
+                    let rod_length_price_combination_clone = JSON.parse(JSON.stringify(rod_length_price_combinations[i]));
                     if (gold_length_found_indices[0] === -1) {
+                        console.log(
+                            rod_length_price_combination_clone.map(function (val) { return val.rod_length + ":" + val.rod_length_price + "|" + ((val.is_gold_coated) ? "G" : "M"); }).join(", "),
+                            " -- price_sum: " + rod_length_price_combination_clone.reduce(function (prev, current) {
+                                return prev + current.rod_length_price;
+                            }, 0));
                         break;
                     }
-                    let rod_length_price_combination_clone = JSON.parse(JSON.stringify(rod_length_price_combinations[i]));
+
                     for (let m = 0; m < gold_length_found_indices.length; m++) {
                         //need to revise this - perhaps clone rod_length_price_combinations
                         rod_length_price_combination_clone[gold_length_found_indices[m]].is_gold_coated = true;
