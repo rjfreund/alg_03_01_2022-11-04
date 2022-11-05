@@ -184,9 +184,23 @@ function get_rod_cut_price_combinations(rod_length_inches, rod_length_prices, go
 //     console.log(sumCombinations[i].join(" "));
 // }
 
+/*
 var rod_length_inches = 10;
 var prices = [1, 14, 35, 44, 45, 60, 91, 110, 117, 158];
 var gold_length_inches = 4;
+*/
+
+let rod_length_inches = 5;
+let prices = [1, 2, 5, 7, 11];
+var gold_length_inches = 1;
+
+/*
+G = 1 -> 11
+G = 2 -> 11
+G = 3 -> 12
+G = 4 -> 14
+G = 5 -> 22
+*/
 
 get_rod_cut_price_combinations(rod_length_inches, prices, gold_length_inches);
 
